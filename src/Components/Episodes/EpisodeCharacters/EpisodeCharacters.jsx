@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom'
 import CharacterCard from '../../Characters/CharacterCard/CharacterCard'
 import LoadingPage from '../../LoadingPage/LoadingPage'
 
-const LocationCharacters = () => {
-    let {location} = useParams()
+const EpisodeCharacters = () => {
+    let {episode} = useParams()
     
     
     const getCharacterFromUrl = async (charUrl) => {
@@ -15,15 +15,15 @@ const LocationCharacters = () => {
     }
     
     const [characters, setCharacters] = useState([])
-    const [locationName, setLocationName] = useState('')
+    const [episodeES, setEpisodeES] = useState('')
     
-    const getLocationCharacters = async (locationId) => {
+    const getEpisodeCharacters = async (episodeId) => {
         try {
-            const loc = await fetch(`https://rickandmortyapi.com/api/location/${locationId}`).then(resp=>resp.json()).then(data=>data)
-            setLocationName(loc.name)
+            const ep = await fetch(`https://rickandmortyapi.com/api/episode/${episodeId}`).then(resp=>resp.json()).then(data=>data)
+            setEpisodeES(ep.episode)
             let chars = []
-            for(let i = 0 ; i < loc.residents.length; i++){
-                chars[i] = await getCharacterFromUrl(loc.residents[i])
+            for(let i = 0 ; i < ep.characters.length; i++){
+                chars[i] = await getCharacterFromUrl(ep.characters[i])
             }
             setCharacters(chars)
         } catch (error) {
@@ -31,19 +31,19 @@ const LocationCharacters = () => {
         }
     }
     useEffect(() => {
-        getLocationCharacters(location)
+        getEpisodeCharacters(episode)
     }, [])
 
 
     return characters.length === 0 
     ? <LoadingPage/> 
-    :<>
-    <Typography align='center' variant='h3' gutterBottom>
-        {locationName} Characters
+    :<><Typography align='center' variant='h3' gutterBottom>
+    {episodeES} Characters
     </Typography> 
-    <Grid container spacing={3} justifyContent="center" alignItems="center">
+     <Grid container spacing={3} justifyContent="center" alignItems="center">
         {characters.map(c => <CharacterCard key={c.id} character={c} />)}
-            </Grid></>
+            </Grid>
+            </>
 }
 
-export default LocationCharacters
+export default EpisodeCharacters

@@ -1,27 +1,25 @@
 import { Card, CardContent, CardHeader, Grid, Link, Typography } from '@material-ui/core';
 import {Link as RouterLink} from 'react-router-dom'
 import React from 'react'
-import useStyles from './locationCardStyles'
 import { handleDate } from '../../../helpers/handleDate';
 
-const LocationCard = ({ location }) => {
-    const classes = useStyles()
+const EpisodeCard = ({ episode }) => {
 
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Card className={classes.root}>
+        <Card >
             <CardHeader
-                title={location.name}
+                title={episode.name}
             />
             <CardContent>
                 <Typography variant="body1" color="textSecondary">
-                    Dimension: {location.dimension}
+                    On air: {episode.air_date}
                     <br/>
-                    Type: {location.type} 
+                    Episode: {episode.episode} 
                     <br/>
-                    Created: {handleDate(location.created)}
+                    Created: {handleDate(episode.created)}
                     <br/>
-                    <Link component={RouterLink} to={`/location${location.id}/characters`}>View characters</Link>
+                    <Link component={RouterLink} to={`/episode${episode.id}/characters`}>View characters</Link>
                 </Typography>
             </CardContent>
         </Card>
@@ -30,4 +28,4 @@ const LocationCard = ({ location }) => {
 }
 
 
-export default LocationCard
+export default EpisodeCard

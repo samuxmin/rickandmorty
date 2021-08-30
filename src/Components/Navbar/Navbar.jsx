@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './navbarStyles'
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 
 const Navbar = () => {
@@ -28,9 +29,9 @@ const Navbar = () => {
           <Typography variant="h6" className={classes.title}>
             Rick and Morty App
           </Typography>
-          <Typography component={Link} to='/'>Characters</Typography>
-          <Typography component={Link} to='/locations'>Locations</Typography>
-          <Typography component={Link} to='/episodes'>Episodes</Typography>
+          <Button color='inherit' component={Link} to='/'>Characters</Button>
+          <Button color='inherit' component={Link} to='/locations'>Locations</Button>
+          <Button color='inherit' component={Link} to='/episodes'>Episodes</Button>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />
