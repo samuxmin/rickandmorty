@@ -2,42 +2,31 @@ import { Button, Grid, IconButton, Typography } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import React, { useEffect, useState } from 'react'
-import Swal from 'sweetalert2'
 import LoadingPage from '../LoadingPage/LoadingPage'
 import CharacterCard from './CharacterCard/CharacterCard'
 import useStyles from '../../styles/styles'
+import { fetchCardInfo } from '../../helpers/fetch'
+import { Link, useParams, useHistory } from 'react-router-dom'
+import { handlePageChange } from '../../helpers/handlePageChange'
 
 const Characters = () => {
-
     const [characters, setCharacters] = useState([])
-    const [thisPage,setThisPage] = useState(1)
+    
+    const { page } = useParams()
+    let history = useHistory()
+    const [thisPage, setThisPage] = useState(parseInt(page))
+    
+    useEffect(()=>{
+        setThisPage(parseInt(page))
+    }, [page])
 
     const classes = useStyles()
-
-    const handlePageChange = (action) => {
-        if(action === 'next'){
-            if(thisPage >= 34){
-                return Swal.fire('This is the last page', 'You cant go forward', 'error')
-            }
-
-            setThisPage(thisPage + 1)
-        } else if(action === 'prev'){
-            if(thisPage <= 1){
-                return Swal.fire('This is the first page', 'You cant go back', 'error')
-            }
-            setThisPage(thisPage - 1)
-        }
-        window.scrollTo({ top: 0, behavior: 'smooth'})
-    }
+    
     const getCharacters = async () => {
-        try {
-            const chars = await fetch(`https://rickandmortyapi.com/api/character?page=${thisPage}`).then(resp=>resp.json()).then(data=>data)
-            setCharacters(chars.results)
-        } catch (error) {
-            console.log(error)
-        }
+        let chars = await fetchCardInfo('character', thisPage)
+        setCharacters(chars.results)
     }
-
+    
     useEffect(()=>{
         getCharacters()
     }, [thisPage])
@@ -46,25 +35,25 @@ const Characters = () => {
         <>
             <Typography variant='h1' align="center" gutterBottom>Characters</Typography>
             <Typography variant="h4" align='center' gutterBottom>
-                <IconButton color='primary' aria-label="Previous page" onClick={() => {handlePageChange('prev')}}><ArrowBackIcon /></IconButton>
+                <IconButton color='primary' aria-label="Previous page" onClick={()=>{handlePageChange('prev',thisPage, 34, history)}}><ArrowBackIcon /></IconButton>
                 Page {thisPage}
-                <IconButton color='primary' aria-label="Next page" onClick={() => {handlePageChange('next')}}><ArrowForwardIcon /></IconButton>
+                <IconButton color='primary' aria-label="Next page" onClick={()=>{handlePageChange('next', thisPage, 34, history)}}><ArrowForwardIcon /></IconButton>
             </Typography>
             <Grid container spacing={3} justifyContent="center" alignItems="center">
                 {characters.map(c=> <CharacterCard key={c.id} character={c} />)}
             </Grid>
             <div className={classes.centerContent}>
-                {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={() => {handlePageChange('prev')}}><ArrowBackIcon /></IconButton>}
+                {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={()=>{handlePageChange('prev',thisPage, 34, history)}}><ArrowBackIcon /></IconButton>}
                 {thisPage > 4 && <Button>...</Button>}
-                    <Button onClick={() => {setThisPage(thisPage> 3? thisPage - 3: 1)}}>{thisPage> 3? thisPage - 3: 1}</Button>
-                    <Button onClick={() => {setThisPage(thisPage> 3? thisPage - 2: 2)}}>{thisPage> 3? thisPage - 2: 2}</Button>
-                    <Button onClick={() => {setThisPage(thisPage> 3? thisPage - 1: 3)}}>{thisPage> 3? thisPage - 1: 3}</Button>
-                    <Button onClick={() => {setThisPage(thisPage> 3? thisPage : 4)}}>{thisPage> 3? thisPage : 4}</Button>
-                    {thisPage < 34 && <Button onClick={() => {setThisPage(thisPage> 3? thisPage + 1: 5)}}>{thisPage> 3? thisPage + 1: 5}</Button>}
-                    {thisPage < 33 && <Button onClick={() => {setThisPage(thisPage> 3? thisPage + 2: 6)}}>{thisPage> 3? thisPage + 2: 6}</Button>}
-                    {thisPage < 32 && <Button onClick={() => {setThisPage(thisPage> 3? thisPage + 3: 7)}}>{thisPage> 3? thisPage + 3: 7}</Button>}
+                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage - 3: 1}`}>{thisPage> 3? thisPage - 3: 1}</Button>
+                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage - 2: 2}`}>{thisPage> 3? thisPage - 2: 2}</Button>
+                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage - 1: 3}`}>{thisPage> 3? thisPage - 1: 3}</Button>
+                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage: 4}`}>{thisPage> 3? thisPage : 4}</Button>
+                    {thisPage < 34 && <Button component={Link} to={`/characters/${thisPage >3? thisPage + 1 : 5}`}>{thisPage> 3? thisPage + 1: 5}</Button>}
+                    {thisPage < 33 && <Button component={Link} to={`/characters/${thisPage >3? thisPage + 2 : 6}`}>{thisPage> 3? thisPage + 2: 6}</Button>}
+                    {thisPage < 32 && <Button component={Link} to={`/characters/${thisPage >3? thisPage + 3 : 7}`}>{thisPage> 3? thisPage + 3: 7}</Button>}
                 {thisPage < 31 && <Button>...</Button>}
-                {thisPage !== 34 && <IconButton aria-label="Next page" color='primary' onClick={() => {handlePageChange('next')}}><ArrowForwardIcon /></IconButton>}
+                {thisPage !== 34 && <IconButton aria-label="Next page" color='primary' onClick={()=>{handlePageChange('next',thisPage ,34, history)}}><ArrowForwardIcon /></IconButton>}
             </div>
         </>
     )

@@ -18,10 +18,10 @@ const EpisodeCharacters = () => {
     const [episodeES, setEpisodeES] = useState('')
     
     const getEpisodeCharacters = async (episodeId) => {
+        let chars = []
         try {
             const ep = await fetch(`https://rickandmortyapi.com/api/episode/${episodeId}`).then(resp=>resp.json()).then(data=>data)
             setEpisodeES(ep.episode)
-            let chars = []
             for(let i = 0 ; i < ep.characters.length; i++){
                 chars[i] = await getCharacterFromUrl(ep.characters[i])
             }

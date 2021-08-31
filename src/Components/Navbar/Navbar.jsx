@@ -29,9 +29,9 @@ const Navbar = () => {
           <Typography variant="h6" className={classes.title}>
             Rick and Morty App
           </Typography>
-          <Button color='inherit' component={Link} to='/'>Characters</Button>
-          <Button color='inherit' component={Link} to='/locations'>Locations</Button>
-          <Button color='inherit' component={Link} to='/episodes'>Episodes</Button>
+          <Button color='inherit' component={Link} to='/characters/1'>Characters</Button>
+          <Button color='inherit' component={Link} to='/locations/1'>Locations</Button>
+          <Button color='inherit' component={Link} to='/episodes/1'>Episodes</Button>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />

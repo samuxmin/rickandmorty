@@ -19,7 +19,7 @@ const EpisodeCard = ({ episode }) => {
                     <br/>
                     Created: {handleDate(episode.created)}
                     <br/>
-                    <Link component={RouterLink} to={`/episode${episode.id}/characters`}>View characters</Link>
+                    <Link component={RouterLink} to={`/episode/${episode.id}/characters`}>View characters</Link>
                 </Typography>
             </CardContent>
         </Card>

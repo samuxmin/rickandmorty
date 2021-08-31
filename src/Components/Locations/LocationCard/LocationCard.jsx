@@ -21,7 +21,7 @@ const LocationCard = ({ location }) => {
                     <br/>
                     Created: {handleDate(location.created)}
                     <br/>
-                    <Link component={RouterLink} to={`/location${location.id}/characters`}>View characters</Link>
+                    <Link component={RouterLink} to={`/location/${location.id}/characters`}>View characters</Link>
                 </Typography>
             </CardContent>
         </Card>

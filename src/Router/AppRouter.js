@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import Characters from '../Components/Characters/Characters';
 import EpisodeCharacters from '../Components/Episodes/EpisodeCharacters/EpisodeCharacters';
 import Episodes from '../Components/Episodes/Episodes';
@@ -13,17 +13,18 @@ const AppRouter = () => {
       <Navbar />
       <div>
         <Switch>
-          <Route exact path='/' component={Characters} />
-          <Route exact path='/episodes' component={Episodes} />
-          <Route exact path='/locations' component={Locations} />
+          <Route exact path='/episodes/:page' component={Episodes} />
+          <Route exact path='/locations/:page' component={Locations} />
+          <Route exact path='/characters/:page' component={Characters} />
           <Route
-            path='/location:location/characters'
+            path='/location/:location/characters'
             component={LocationCharacters}
           />
-           <Route
-            path='/episode:episode/characters'
+          <Route
+            path='/episode/:episode/characters'
             component={EpisodeCharacters}
           />
+         <Redirect to='/characters/1' />
         </Switch>
       </div>
     </Router>
