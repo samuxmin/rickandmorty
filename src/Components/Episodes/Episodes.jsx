@@ -48,9 +48,9 @@ return episodes.length === 0 ? <LoadingPage/> : (
             </Grid>
             <div className={classes.centerContent}>
                {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={() => {handlePageChange('prev', thisPage, 4, history)}}><ArrowBackIcon /></IconButton>}
-                    <Button component={Link} to='/episodes/1'>1</Button>
-                    <Button component={Link} to='/episodes/2'>2</Button>
-                    <Button component={Link} to='/episodes/3'>3</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/episodes/1'>1</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/episodes/2'>2</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/episodes/3'>3</Button>
                 {thisPage!==3 && <IconButton aria-label="Next page" color='primary' onClick={() => {handlePageChange('next', thisPage, 4, history)}}><ArrowForwardIcon /></IconButton>}
             </div>
         </>

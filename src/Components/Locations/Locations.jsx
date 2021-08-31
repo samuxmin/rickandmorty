@@ -43,12 +43,12 @@ return locations.length === 0 ? <LoadingPage/> : (
 
             <div className={classes.centerContent}>
                 {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={() => {handlePageChange('prev',thisPage, 6, history)}}><ArrowBackIcon /></IconButton>}
-                    <Button component={Link} to='/locations/1'>1</Button>
-                    <Button component={Link} to='/locations/2'>2</Button>
-                    <Button component={Link} to='/locations/3'>3</Button>
-                    <Button component={Link} to='/locations/4'>4</Button>
-                    <Button component={Link} to='/locations/5'>5</Button>
-                    <Button component={Link} to='/locations/6'>6</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/locations/1'>1</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/locations/2'>2</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/locations/3'>3</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/locations/4'>4</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/locations/5'>5</Button>
+                    <Button onClick={handlePageChange} component={Link} to='/locations/6'>6</Button>
                 {thisPage !== 6 && <IconButton aria-label="Next page" color='primary' onClick={() => {handlePageChange('next',thisPage, 6, history)}}><ArrowForwardIcon /></IconButton>}
             </div>
         </>

@@ -45,13 +45,13 @@ const Characters = () => {
             <div className={classes.centerContent}>
                 {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={()=>{handlePageChange('prev',thisPage, 34, history)}}><ArrowBackIcon /></IconButton>}
                 {thisPage > 4 && <Button>...</Button>}
-                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage - 3: 1}`}>{thisPage> 3? thisPage - 3: 1}</Button>
-                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage - 2: 2}`}>{thisPage> 3? thisPage - 2: 2}</Button>
-                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage - 1: 3}`}>{thisPage> 3? thisPage - 1: 3}</Button>
-                    <Button component={Link} to={`/characters/${thisPage> 3? thisPage: 4}`}>{thisPage> 3? thisPage : 4}</Button>
-                    {thisPage < 34 && <Button component={Link} to={`/characters/${thisPage >3? thisPage + 1 : 5}`}>{thisPage> 3? thisPage + 1: 5}</Button>}
-                    {thisPage < 33 && <Button component={Link} to={`/characters/${thisPage >3? thisPage + 2 : 6}`}>{thisPage> 3? thisPage + 2: 6}</Button>}
-                    {thisPage < 32 && <Button component={Link} to={`/characters/${thisPage >3? thisPage + 3 : 7}`}>{thisPage> 3? thisPage + 3: 7}</Button>}
+                    <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 3: 1}`}>{thisPage> 3? thisPage - 3: 1}</Button>
+                    <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 2: 2}`}>{thisPage> 3? thisPage - 2: 2}</Button>
+                    <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 1: 3}`}>{thisPage> 3? thisPage - 1: 3}</Button>
+                    <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage: 4}`}>{thisPage> 3? thisPage : 4}</Button>
+                    {thisPage < 34 && <Button component={Link} onClick={handlePageChange} to={`/characters/${thisPage >3? thisPage + 1 : 5}`}>{thisPage> 3? thisPage + 1: 5}</Button>}
+                    {thisPage < 33 && <Button component={Link} onClick={handlePageChange} to={`/characters/${thisPage >3? thisPage + 2 : 6}`}>{thisPage> 3? thisPage + 2: 6}</Button>}
+                    {thisPage < 32 && <Button component={Link} onClick={handlePageChange} to={`/characters/${thisPage >3? thisPage + 3 : 7}`}>{thisPage> 3? thisPage + 3: 7}</Button>}
                 {thisPage < 31 && <Button>...</Button>}
                 {thisPage !== 34 && <IconButton aria-label="Next page" color='primary' onClick={()=>{handlePageChange('next',thisPage ,34, history)}}><ArrowForwardIcon /></IconButton>}
             </div>
