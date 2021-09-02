@@ -113,7 +113,10 @@ export const CharacterScreen = () => {
                     <Button color='secondary' variant='outlined' onClick={handleReturn} fullWidth className={classes.returnBtn}>go back</Button>
             <Typography align='center' variant='h4' paragraph>Episodes</Typography>
             <Grid container spacing={3} justifyContent="center" alignItems="center">
-                {episodes.map(e=> <EpisodeCard key={e.id} episode={e} />)}
+                {episodes.length>0 
+                    ? episodes.map(e=> <EpisodeCard key={e.id} episode={e} />)
+                    :<LoadingPage />
+                }
             </Grid>
         </>
     )
