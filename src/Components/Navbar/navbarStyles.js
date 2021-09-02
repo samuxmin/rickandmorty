@@ -9,6 +9,11 @@ export default makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textDecoration: 'none',
+    color: 'black',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   offset: theme.mixins.toolbar,
   image: {

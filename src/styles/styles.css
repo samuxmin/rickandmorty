@@ -5,3 +5,13 @@ html,
 body {
   background: url('../background/cool-background.png');
 }
+@media (max-width: 600px) {
+  #footer {
+    background-position: 110% 100%;
+  }
+}
+@media (max-width: 430px) {
+  #footer {
+    background-position: 125% 100%;
+  }
+}

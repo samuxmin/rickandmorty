@@ -20,6 +20,7 @@ const EpisodeCharacters = () => {
     }
     useEffect(() => {
         getEpisodeCharacters()
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [episode])
 
 

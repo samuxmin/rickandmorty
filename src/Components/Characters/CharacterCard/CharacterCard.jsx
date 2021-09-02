@@ -49,6 +49,7 @@ const CharacterCard = ({character}) => {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
+                    <Link href={`/character/view/${character.id}`} mx={2}>View Character</Link>
                     <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
@@ -70,7 +71,7 @@ const CharacterCard = ({character}) => {
                 {character.type}
                 <br/>
                 Created: {handleDate(character.created)}
-                </Typography>
+            </Typography>
             </CardContent>
         </Collapse>
         </Card>

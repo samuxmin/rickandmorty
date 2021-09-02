@@ -1,6 +1,12 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import Characters from '../Components/Characters/Characters';
+import { CharacterScreen } from '../Components/CharacterScreen/CharacterScreen';
 import EpisodeCharacters from '../Components/Episodes/EpisodeCharacters/EpisodeCharacters';
 import Episodes from '../Components/Episodes/Episodes';
 import Footer from '../Components/Footer/Footer';
@@ -25,7 +31,8 @@ const AppRouter = () => {
             path='/episode/:episode/characters'
             component={EpisodeCharacters}
           />
-         <Redirect to='/characters/1' />
+          <Route path='/character/view/:id' component={CharacterScreen} />
+          <Redirect to='/characters/1' />
         </Switch>
       </div>
       <Footer />

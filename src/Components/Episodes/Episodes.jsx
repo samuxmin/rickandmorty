@@ -13,6 +13,7 @@ import { handlePageChange } from '../../helpers/handlePageChange'
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState([])
+    
     const { page } = useParams()
     let history = useHistory()
     const [thisPage, setThisPage] = useState(parseInt(page))
@@ -33,6 +34,7 @@ const Episodes = () => {
 
 useEffect(()=>{
     getEpisodes()
+    //eslint-disable-next-line react-hooks/exhaustive-deps
 }, [thisPage])
 
 return episodes.length === 0 ? <LoadingPage/> : (

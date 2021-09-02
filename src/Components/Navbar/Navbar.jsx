@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -7,13 +7,14 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './navbarStyles'
 import { Link } from 'react-router-dom';
-import { Button, Hidden, Menu, MenuItem } from '@material-ui/core';
+import {  Button, Hidden, Menu, MenuItem } from '@material-ui/core';
+
 
 
 const Navbar = () => {
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
@@ -25,9 +26,13 @@ const Navbar = () => {
   };
 
 
+
+  
+
+
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" style={{backgroundColor:'rgba( 83, 171, 238, .8)', color:'black'}}>
+      <AppBar position="fixed" style={{backgroundColor:`rgba( 83, 171, 238, .8)`, color:'black'}}>
         <Toolbar>
           <Hidden mdUp>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleMenu}>
@@ -53,13 +58,13 @@ const Navbar = () => {
                 <MenuItem component={Link} to='/locations/1' onClick={handleClose}>Locations</MenuItem>
                 <MenuItem component={Link} to='/episodes/1'onClick={handleClose}>Episodes</MenuItem>
               </Menu>
-          <img
+          <img 
               src='/assets/rick-and-morty.png'
               alt='Commerce.js'
               height='25px'
               className={classes.image}
               />
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" component={Link} to='/' className={classes.title}>
               Rick and Morty App
            </Typography>
            <Hidden smDown>

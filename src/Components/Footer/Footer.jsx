@@ -11,7 +11,7 @@ const Footer = () => {
     const classes = useStyles()
 
     return (
-        <Box fixed mt={2} mx={0} className={classes.root} >
+        <Box mt={2} mx={0} className={classes.root} id='footer'>
             <Typography align='center' variant='h6'>Page made by <Link href='https://samuxmin.github.io' target='_blank'>samuxmin</Link></Typography>
             <Typography align='center' variant='body2'>Using <Link href='https://rickandmortyapi.com/' target='_blank'>Rick and Morty API</Link></Typography>
             <Grid 

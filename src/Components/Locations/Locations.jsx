@@ -28,6 +28,7 @@ const Locations = () => {
 
 useEffect(()=>{
     getLocations()
+    //eslint-disable-next-line react-hooks/exhaustive-deps
 }, [thisPage])
 
 return locations.length === 0 ? <LoadingPage/> : (
@@ -44,7 +45,7 @@ return locations.length === 0 ? <LoadingPage/> : (
 
             <div className={classes.centerContent}>
                 {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={() => {handlePageChange('prev',thisPage, 6, history)}}><ArrowBackIcon /></IconButton>}
-                <Hidden smDown>
+                <Hidden xsDown>
                     <Button onClick={handlePageChange} component={Link} to='/locations/1'>1</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/2'>2</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/3'>3</Button>

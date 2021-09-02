@@ -29,6 +29,7 @@ const Characters = () => {
     
     useEffect(()=>{
         getCharacters()
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [thisPage])
 
     return characters.length === 0 ? <LoadingPage/> : (
@@ -44,7 +45,7 @@ const Characters = () => {
             </Grid>
             <div className={classes.centerContent}>
                 {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={()=>{handlePageChange('prev',thisPage, 34, history)}}><ArrowBackIcon /></IconButton>}
-                <Hidden smDown>
+                <Hidden xsDown>
                 {thisPage > 4 && <Button>...</Button>}
                     <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 3: 1}`}>{thisPage> 3? thisPage - 3: 1}</Button>
                     <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 2: 2}`}>{thisPage> 3? thisPage - 2: 2}</Button>

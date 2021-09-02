@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
+
 export default makeStyles(() => ({
   root: {
     background: 'url(/assets/footer.png) right',
