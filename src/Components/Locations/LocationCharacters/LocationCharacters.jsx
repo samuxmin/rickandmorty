@@ -1,6 +1,7 @@
 import { Grid, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { fetchIndividualCharacters } from '../../../helpers/fetch'
 
 import CharacterCard from '../../Characters/CharacterCard/CharacterCard'
 import LoadingPage from '../../LoadingPage/LoadingPage'
@@ -9,30 +10,19 @@ const LocationCharacters = () => {
     let {location} = useParams()
     
     
-    const getCharacterFromUrl = async (charUrl) => {
-        const char = await fetch(charUrl).then(resp=>resp.json()).then(data=>data)
-        return await char
-    }
-    
+
     const [characters, setCharacters] = useState([])
     const [locationName, setLocationName] = useState('')
     
-    const getLocationCharacters = async (locationId) => {
-        try {
-            const loc = await fetch(`https://rickandmortyapi.com/api/location/${locationId}`).then(resp=>resp.json()).then(data=>data)
-            setLocationName(loc.name)
-            let chars = []
-            for(let i = 0 ; i < loc.residents.length; i++){
-                chars[i] = await getCharacterFromUrl(loc.residents[i])
-            }
-            setCharacters(chars)
-        } catch (error) {
-            console.log(error)
-        }
+    const getLocationCharacters = async ()=> {
+        let data = await fetchIndividualCharacters('location', location)
+        setCharacters(data[0])
+        setLocationName(data[1])
     }
+  
     useEffect(() => {
-        getLocationCharacters(location)
-    }, [])
+        getLocationCharacters()
+    }, [location])
 
 
     return characters.length === 0 

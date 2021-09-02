@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, Typography } from '@material-ui/core'
+import { Button, Grid, IconButton, Typography, Hidden } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import LocationCard from './LocationCard/LocationCard'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
@@ -8,6 +8,7 @@ import useStyles from '../../styles/styles'
 import { fetchCardInfo } from '../../helpers/fetch'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { handlePageChange } from '../../helpers/handlePageChange'
+
 
 const Locations = () => {
     const [locations, setLocations] = useState([])
@@ -31,7 +32,7 @@ useEffect(()=>{
 
 return locations.length === 0 ? <LoadingPage/> : (
         <>
-            <Typography variant='h1' align="center" gutterBottom>Locations</Typography>
+            <Typography variant='h2' align="center" gutterBottom>Locations</Typography>
             <Typography variant="h4" align='center' gutterBottom>
                 <IconButton color='primary' aria-label="Previous page" onClick={() => {handlePageChange('prev',thisPage, 6, history)}}><ArrowBackIcon /></IconButton>
                 Page {thisPage}
@@ -43,12 +44,14 @@ return locations.length === 0 ? <LoadingPage/> : (
 
             <div className={classes.centerContent}>
                 {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={() => {handlePageChange('prev',thisPage, 6, history)}}><ArrowBackIcon /></IconButton>}
+                <Hidden smDown>
                     <Button onClick={handlePageChange} component={Link} to='/locations/1'>1</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/2'>2</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/3'>3</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/4'>4</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/5'>5</Button>
                     <Button onClick={handlePageChange} component={Link} to='/locations/6'>6</Button>
+                </Hidden>
                 {thisPage !== 6 && <IconButton aria-label="Next page" color='primary' onClick={() => {handlePageChange('next',thisPage, 6, history)}}><ArrowForwardIcon /></IconButton>}
             </div>
         </>

@@ -1,4 +1,4 @@
-import { Button, Grid, IconButton, Typography } from '@material-ui/core'
+import { Button, Grid, Hidden, IconButton, Typography } from '@material-ui/core'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import React, { useEffect, useState } from 'react'
@@ -33,7 +33,7 @@ const Characters = () => {
 
     return characters.length === 0 ? <LoadingPage/> : (
         <>
-            <Typography variant='h1' align="center" gutterBottom>Characters</Typography>
+            <Typography variant='h2' align="center" gutterBottom>Characters</Typography>
             <Typography variant="h4" align='center' gutterBottom>
                 <IconButton color='primary' aria-label="Previous page" onClick={()=>{handlePageChange('prev',thisPage, 34, history)}}><ArrowBackIcon /></IconButton>
                 Page {thisPage}
@@ -44,6 +44,7 @@ const Characters = () => {
             </Grid>
             <div className={classes.centerContent}>
                 {thisPage !==1 && <IconButton aria-label="Previous page" color='primary' onClick={()=>{handlePageChange('prev',thisPage, 34, history)}}><ArrowBackIcon /></IconButton>}
+                <Hidden smDown>
                 {thisPage > 4 && <Button>...</Button>}
                     <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 3: 1}`}>{thisPage> 3? thisPage - 3: 1}</Button>
                     <Button onClick={handlePageChange} component={Link} to={`/characters/${thisPage> 3? thisPage - 2: 2}`}>{thisPage> 3? thisPage - 2: 2}</Button>
@@ -53,6 +54,7 @@ const Characters = () => {
                     {thisPage < 33 && <Button component={Link} onClick={handlePageChange} to={`/characters/${thisPage >3? thisPage + 2 : 6}`}>{thisPage> 3? thisPage + 2: 6}</Button>}
                     {thisPage < 32 && <Button component={Link} onClick={handlePageChange} to={`/characters/${thisPage >3? thisPage + 3 : 7}`}>{thisPage> 3? thisPage + 3: 7}</Button>}
                 {thisPage < 31 && <Button>...</Button>}
+                </Hidden>
                 {thisPage !== 34 && <IconButton aria-label="Next page" color='primary' onClick={()=>{handlePageChange('next',thisPage ,34, history)}}><ArrowForwardIcon /></IconButton>}
             </div>
         </>

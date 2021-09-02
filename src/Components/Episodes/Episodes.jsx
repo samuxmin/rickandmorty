@@ -37,7 +37,7 @@ useEffect(()=>{
 
 return episodes.length === 0 ? <LoadingPage/> : (
         <>
-            <Typography variant='h1' align="center" gutterBottom>Episodes</Typography>
+            <Typography variant='h2' align="center" gutterBottom>Episodes</Typography>
             <Typography variant="h4" align='center' gutterBottom>
                 <IconButton color='primary' aria-label="Previous page" onClick={() => {handlePageChange('prev',thisPage,3,history)}}><ArrowBackIcon /></IconButton>
                 Page {thisPage}

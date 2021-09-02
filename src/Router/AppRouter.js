@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 import Characters from '../Components/Characters/Characters';
 import EpisodeCharacters from '../Components/Episodes/EpisodeCharacters/EpisodeCharacters';
 import Episodes from '../Components/Episodes/Episodes';
+import Footer from '../Components/Footer/Footer';
 import LocationCharacters from '../Components/Locations/LocationCharacters/LocationCharacters';
 import Locations from '../Components/Locations/Locations';
 import Navbar from '../Components/Navbar/Navbar';
@@ -27,6 +28,7 @@ const AppRouter = () => {
          <Redirect to='/characters/1' />
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 };
