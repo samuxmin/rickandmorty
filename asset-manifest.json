@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/rickandmorty/static/css/main.1b03e9d3.chunk.css",
+    "main.js": "/rickandmorty/static/js/main.f766f2ed.chunk.js",
+    "main.js.map": "/rickandmorty/static/js/main.f766f2ed.chunk.js.map",
+    "runtime-main.js": "/rickandmorty/static/js/runtime-main.b547e3a9.js",
+    "runtime-main.js.map": "/rickandmorty/static/js/runtime-main.b547e3a9.js.map",
+    "static/css/2.5785c61a.chunk.css": "/rickandmorty/static/css/2.5785c61a.chunk.css",
+    "static/js/2.221d1032.chunk.js": "/rickandmorty/static/js/2.221d1032.chunk.js",
+    "static/js/2.221d1032.chunk.js.map": "/rickandmorty/static/js/2.221d1032.chunk.js.map",
+    "index.html": "/rickandmorty/index.html",
+    "static/css/2.5785c61a.chunk.css.map": "/rickandmorty/static/css/2.5785c61a.chunk.css.map",
+    "static/css/main.1b03e9d3.chunk.css.map": "/rickandmorty/static/css/main.1b03e9d3.chunk.css.map",
+    "static/js/2.221d1032.chunk.js.LICENSE.txt": "/rickandmorty/static/js/2.221d1032.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/rickandmorty/static/media/cool-background.3a58f581.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b547e3a9.js",
+    "static/css/2.5785c61a.chunk.css",
+    "static/js/2.221d1032.chunk.js",
+    "static/css/main.1b03e9d3.chunk.css",
+    "static/js/main.f766f2ed.chunk.js"
+  ]
+}
